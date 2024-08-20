@@ -1,0 +1,50 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  //this defines what 1rem is
+  font-size: 62.5%; //1rem= 10px, 10/16 = 62.5%
+
+  @include respond(tab-land) {
+    //width less then 900
+    font-size: 56.25%; //1rem=9px, 9/16=56.25%// the bigger comes first, last is executed first so it should be for the pc
+  }
+
+  @include respond(tab-port) {
+    //width less then 600
+    font-size: 50%; //1rem=9px, 9/16=56.25%//
+  }
+
+  @include respond(big-desktop) {
+    font-size: 68.75%; //1rem=10, 11/16 = 75%
+  }
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+//media query manager
+/* 
+0 -600px:  phone
+600-900px: tablet-potriat
+900-1200px : tablet-ladscape
+[1200-1800] is where our normal styles apply
+1800px+ : big desktop
+
+
+*/
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
